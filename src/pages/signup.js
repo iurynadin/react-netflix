@@ -80,6 +80,4 @@ export default function Signup() {
             <FooterContainer />
         </>
     )
-
-    return <p>Hello from the Signup</p>
 }

@@ -6,9 +6,9 @@ export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
         <Route 
             {...rest}
             render={() => {
-                console.log(user);
+                // console.log(user);
                 if(!user){
-                    return children
+                    return children;
                 }
                 if(user){
                     return (
@@ -27,7 +27,7 @@ export function ProtectedRoute({ user, children, ...rest }) {
     return (
         <Route 
             {...rest}
-            render={({ location }) => { //locati to preserve history
+            render={({ location }) => { //location to preserve history
                 if(user) {
                     return children;
                 }

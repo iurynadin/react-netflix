@@ -7,10 +7,6 @@ export default function Footer({children, ...restProps}) {
     )
 }
 
-Footer.Container = function FooterContainer({ children, ...restProps }) {
-    return <Container {...restProps}>{children}</Container>
-}
-
 Footer.Row = function FooterRow({ children, ...restProps }) {
     return <Row {...restProps}>{children}</Row>
 }

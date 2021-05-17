@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
+import Fuse from "fuse.js";
 import { SelectProfileContainer } from './profiles'
 import { FirebaseContext } from "../context/firebase";
-import { Header, Loading, Card } from "../components";
+import { FooterContainer } from "./footer";
+import { Header, Loading, Card, Player } from "../components";
 import * as ROUTES from "../constants/routes";
 import logo from '../logo.svg';
 
@@ -10,13 +12,12 @@ export function BrowserContainer({ slides }) {
     const [ searchTerm, setSearchTerm ] = useState('')
     const [ profile, setProfile ] = useState([]);
     const [ loading, setLoading ] = useState(true);
-    const [slideRows, setSlideRows] = useState([]);
+    const [ slideRows, setSlideRows ] = useState([]);
 
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
 
     useEffect(() => {
-        // console.log(`profile`, profile)
         setTimeout(() => {
             setLoading(false);
         }, 3000);
@@ -26,6 +27,19 @@ export function BrowserContainer({ slides }) {
         console.log(`slides: `, slides)
         setSlideRows(slides[category]);
     }, [slides, category])
+
+    useEffect(() => {
+        const fuse = new Fuse(slideRows, {
+            keys: ['data.description', 'data.title', 'data.genre'],
+        })
+        const results = fuse.search(searchTerm).map(({item}) => item);
+
+        if(slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+            setSlideRows(results);
+        } else {
+            setSlideRows(slides[category]);
+        }
+    }, [searchTerm])
 
     return profile.displayName ? (
         <>
@@ -96,14 +110,16 @@ export function BrowserContainer({ slides }) {
                         </Card.Entities>
 
                         <Card.Feature category={category}>
-                            {/* <Player>
+                            <Player>
                                 <Player.Button />
                                 <Player.Video src="/videos/bunny.mp4" />
-                            </Player> */}
+                            </Player>
                         </Card.Feature>
                     </Card>
                 ))}
             </Card.Group>
+
+            <FooterContainer></FooterContainer>
         </>
 
         

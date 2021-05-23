@@ -9,7 +9,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "4.0.3",
+        "react-scripts": "3.4.0",
         "styled-components": "^5.2.3",
         "web-vitals": "^1.0.1"
     },
@@ -35,11 +35,16 @@
         "collectCoverageFrom": [
             "<rootDir>/src/**/*.js",
             "!<rootDir>/src/app.js",
+            "!<rootDir>/src/helpers/routes.js",
+            "!<rootDir>/src/lib/firebase.js",
+            "!<rootDir>/src/lib/firebase.prod.js",
             "!<rootDir>/src/index.js",
             "!<rootDir>/src/seed.js",
+            "!<rootDir>/src/utils/index.js",
+            "!<rootDir>/src/pages/index.js",
             "!<rootDir>/src/global-styles.js",
             "!<rootDir>/src/components/index.js",
-            "!<rootDir>/src/lib/firebase.prod.js",
+            "!<rootDir>/src/firebase.prod.js",
             "!<rootDir>/src/hooks/*.js",
             "!<rootDir>/src/context/*.js"
         ],

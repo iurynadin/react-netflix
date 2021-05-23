@@ -26,10 +26,6 @@ Profiles.Name = function ProfilesName({ children, ...restProps }) {
     return <Name {...restProps}>{children}</Name>;
 }
 
-Profiles.Item = function ProfilesItem({ children, ...restProps }) {
-    return <Item {...restProps}>{children}</Item>;
-}
-
 Profiles.User = function ProfilesUser({ children, ...restProps }) {
     return <User {...restProps}>{children}</User>;
 }

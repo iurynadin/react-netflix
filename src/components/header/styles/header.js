@@ -185,7 +185,7 @@ export const Profile = styled.div`
     }
 `;
 
-export const FeatureCallout = styled.h2`
+export const FeatureCallOut = styled.h2`
     color: white;
     font-size: 50px;
     line-height: normal;
